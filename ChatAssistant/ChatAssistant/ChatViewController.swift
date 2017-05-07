@@ -23,9 +23,10 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
         }
     }
     @IBAction func sendButton(_ sender: UIButton) {
-        sendMessage()
+        sendMessage(text: "")
     }
     
+    var offset:Int = 53
     var textTemp = ""
     var newInput = ""
     var Chats:NSMutableArray!
@@ -59,6 +60,13 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
         }
     }
     
+    var v = "" {
+        didSet{
+            offset += 1
+            print(v)
+            sendMessage(text: v)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "ChatView"
@@ -71,6 +79,15 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
         textTemp = ""
         fetchData(input: firstInput, Type: "Entities")
         fetchData(input: firstInput, Type: "Emotion")
+        
+        //runloop轮询接受消息
+        DispatchQueue.global().async {
+            // 非主线程不能使用 Timer.scheduledTimer进行初始化
+            let timer = Timer(timeInterval: 3, repeats: true, block: { (timer) in
+                self.fetchMessage(offset: "\(self.offset)")
+            })
+            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        }
         
         //开启键盘监听
         //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -120,6 +137,39 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
         txtMsg.delegate=self
         sendBackView.addSubview(txtMsg)
         self.view.addSubview(sendBackView)
+    }
+    
+    func fetchMessage(offset: String) -> Void
+    {
+        //获取消息
+        let url = "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/9efda2b6ba2be2eac74b3bf7f8bc37f9cfac1505ad6789833f87e4ae289f28de/pull_api/pull_action?offset="+offset
+        DispatchQueue.global().async{ ()-> Void in
+            let parseData = self.parseJSON(inputData: self.getJSON(urlToRequest: url))
+            //print(parseData)
+            if parseData.count != 0 {
+                if parseData["-1"] == nil{
+                    for (_,value) in parseData{
+                        //print("\(key):\(value)")
+                        self.v = "\(value)"
+                    }
+                    /*
+                    //sort
+                    var a = [Int]()
+                    var b = [String]()
+                    var t:NSNumber
+                    for (key,value) in parseData{
+                        t = (key as! NSNumber)
+                        a.append(t.intValue)
+                        b.append(value as? String ?? "")
+                    }
+                    a.sort(by: <)
+                    for ele in a{
+                        print("\(ele):\(parseData[ele])")
+                    }
+                    */
+                }
+            }
+        }
     }
     
     func fetchData(input: String, Type:String) -> Void {
@@ -173,30 +223,47 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField:UITextField) -> Bool
     {
-        sendMessage()
+        sendMessage(text: "")
         return true
     }
     
-    func sendMessage()
+    func sendMessage(text: String)
     {
-        if let sender = txtMsg{
-            let thisChat =  MessageItem(body:sender.text! as NSString, user:me, date:Date(), mtype:ChatType.mine)
-            let thatChat =  MessageItem(body:"\(sender.text!)" as NSString, user:you, date:Date(), mtype:ChatType.someone)
-            newInput = sender.text!
+        if text == "" {
+            if let sender = txtMsg{
+                let thisChat =  MessageItem(body:sender.text! as NSString, user:me, date:Date(), mtype:ChatType.mine)
+                let thatChat =  MessageItem(body:"\(sender.text!)" as NSString, user:you, date:Date(), mtype:ChatType.someone)
+                newInput = sender.text!
+                
+                Chats.add(thisChat)
+                Chats.add(thatChat)
+                self.tableView.chatDataSource = self
+                self.tableView.reloadData()
+                
+                sender.resignFirstResponder()
+                sender.text = ""
+                
+                textTemp = ""
+                fetchData(input: newInput, Type: "Entities")
+                fetchData(input: newInput, Type: "Emotion")
+            }
+        }
+        else {
+            let tx: NSString = NSString(cString: text.cString(using: String.Encoding.utf8)!,encoding: String.Encoding.utf8.rawValue)!
+            let thisChat =  MessageItem(body: tx as NSString, user:me, date:Date(), mtype:ChatType.mine)
+            let thatChat =  MessageItem(body:"\(tx)" as NSString, user:you, date:Date(), mtype:ChatType.someone)
+            newInput = text
             
             Chats.add(thisChat)
             Chats.add(thatChat)
             self.tableView.chatDataSource = self
             self.tableView.reloadData()
             
-            sender.resignFirstResponder()
-            sender.text = ""
-            
             textTemp = ""
             fetchData(input: newInput, Type: "Entities")
             fetchData(input: newInput, Type: "Emotion")
-        }
     }
+}
     
     func setupChatTable()
     {
