@@ -33,6 +33,7 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
     var me:UserInfo!
     var you:UserInfo!
     var txtMsg:UITextField!
+    var sendBackView = UIView(frame:CGRect(x: 0,y: 1000 - 56 ,width: 300 ,height: 56))
     var txtEmotion:String = ""{
         didSet{
             switch txtEmotion {
@@ -70,12 +71,40 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
         textTemp = ""
         fetchData(input: firstInput, Type: "Entities")
         fetchData(input: firstInput, Type: "Emotion")
+        
+        //开启键盘监听
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    //deinit {
+        //移除键盘通知
+        //NotificationCenter.default.removeObserver(self)
+    //}
     
     func setupSendBack() {
         //创建消息框
         let screenWidth = UIScreen.main.bounds.width
-        let sendBackView = UIView(frame:CGRect(x: 0,y: self.view.frame.size.height - 56,width: screenWidth,height: 56))
+        sendBackView = UIView(frame:CGRect(x: 0,y: self.view.frame.size.height - 56,width: screenWidth,height: 56))
+        
+        sendBackView.backgroundColor=UIColor.white
+        sendBackView.alpha=0.5
+        
+        txtMsg = UITextField(frame:CGRect(x: 45,y: 10,width: screenWidth - 200,height: 30))
+        txtMsg.backgroundColor = txtColor
+        txtMsg.textColor=UIColor.black
+        txtMsg.font=UIFont.boldSystemFont(ofSize: 12)
+        txtMsg.layer.cornerRadius = 10.0
+        txtMsg.returnKeyType = UIReturnKeyType.send
+        
+        //Set the delegate so you can respond to user input
+        txtMsg.delegate=self
+        sendBackView.addSubview(txtMsg)
+        self.view.addSubview(sendBackView)
+    }
+    
+    func setupSendBackTop(keyBoardHeight: CGFloat){
+        let screenWidth = UIScreen.main.bounds.width
+        sendBackView = UIView(frame:CGRect(x: 0,y: self.view.frame.size.height - 56 + keyBoardHeight ,width: screenWidth,height: 56))
         
         sendBackView.backgroundColor=UIColor.white
         sendBackView.alpha=0.5
@@ -203,6 +232,26 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
     {
         return Chats[row] as! MessageItem
     }
+    
+    /*
+    //键盘
+    func keyBoardWillShow(_ notification: Notification){
+        //获取userInfo
+        let kbInfo = notification.userInfo
+        //获取键盘的size
+        let kbRect = (kbInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //键盘的y偏移量
+        let changeY = kbRect.origin.y - self.view.frame.size.height
+        
+        print(changeY)
+        sendBackView.removeFromSuperview()
+        setupSendBackTop(keyBoardHeight: changeY)
+        }
+    func keyBoardWillHide(_ notification: Notification){
+        sendBackView.removeFromSuperview()
+        setupSendBack()
+    }
+    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
