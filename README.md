@@ -1,4 +1,6 @@
 # HACKxSJTU_ChatAssistant
+![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/Artboard@3x.png?raw=true)
+![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6006.PNG?raw=true)![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6009.PNG?raw=true)![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6010.PNG?raw=true)![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6014.PNG?raw=true)![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6016.PNG?raw=true)![-w100](https://github.com/RickeyBoy/HACKxSJTU_ChatAssistant/blob/master/imgs/IMG_6017.PNG?raw=true)
 
 ### Functions:
 1. Basic UI including information TableView , chat details & Popover window contains search results
