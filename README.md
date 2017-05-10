@@ -1,6 +1,5 @@
 # HACKxSJTU_ChatAssistant
 ![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
-![Python](https://img.shields.io/pypi/pyversions/Django.svg)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 ### Functions:
