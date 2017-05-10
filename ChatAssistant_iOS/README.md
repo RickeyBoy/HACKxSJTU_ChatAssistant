@@ -37,5 +37,5 @@
     - You can add substring to the url to get the specific result. Substring looks like `?text=%22I+am+so+happy%22&type=Emotion`. 
     - requirement: 
         - `text` must be a sentence with `+` rather than black space. 
-        - `%22` represents `"`, can not replace by \"`. 
+        - `%22` represents `"`, can not replace by `\"`.
         - `type=Emotion` or `type=Entities`.
