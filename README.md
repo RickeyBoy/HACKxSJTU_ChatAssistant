@@ -2,6 +2,9 @@
 ![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
+### Quick Start:
+1. iOS Application: Download `ChatAssistant_iOS` and run
+
 ### Functions:
 1. Basic UI including information TableView , chat details & Popover window contains search results
 2. Fetch data through RESTful API(url encapsulated using OpenWhisk) And resolve data structrue from JSON into Swift NSDictionary. Data contains entities(and related information) and user's emotions.
