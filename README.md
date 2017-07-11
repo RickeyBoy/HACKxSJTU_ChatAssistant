@@ -1,6 +1,6 @@
 # HACKxSJTU_ChatAssistant
 ![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
-![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)
 
 ### Quick Start:
 1. iOS Application: Download `ChatAssistant_iOS` and run
