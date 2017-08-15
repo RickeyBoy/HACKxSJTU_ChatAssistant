@@ -1,0 +1,259 @@
+body{
+    font-family: 'Roboto',sans-serif;
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/background.png');
+    background-color: rgba(58,71,80,1);
+    /*background-image: url('../img/texture.png');
+    background-color: rgba(58,71,80,0.3);*/
+}
+.title{
+    /*background-color: rgba(211,214,219,1);*/
+    height:200px;
+    text-align: center;
+}
+.title  .h1{
+    font-size:6rem;
+    line-height: 6rem;
+    font-weight: 100;
+    font-family: sans-serif;
+}
+.container{
+    height: 100%;
+
+}
+.content{
+    padding-top: 3%;
+    width: 100%;
+    height: 100%;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #303841;
+}
+.bar{
+    height: 60px;
+    line-height: 60px;
+    background-color: #BDC0BA;
+    display: flex;
+    width: 100%;
+    color: #292b2c;
+    box-shadow: 2px 0px 2px #a9a9a9;
+    position: absolute;
+    z-index: 100;
+}
+.avatar{
+    display: inline;
+    flex:1;
+}
+.avatar > img{
+    border-radius: 20px;
+    position: relative;
+    left:15px;
+    display: inline-block;
+}
+.header{
+    display: inline;
+    flex:3;
+    padding: 6px 8px;
+}
+.header-space{
+    flex:1;
+}
+.nickname{
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: auto;
+    line-height: 1.8em;
+    font-size: 1.1em;
+}
+.status{
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: auto;
+    line-height: 1.1em;
+    font-size: 0.8em;
+}
+.fa-search{
+    text-align:center;
+    vertical-align: middle;
+    width: 100%;
+    display: none;
+}
+.info{
+    display: none;
+}
+.entityinfo{
+    text-indent: 2em;
+}
+.text{
+    width:100%;
+}
+.text > p:first-of-type{
+    width:100%;
+    margin-top:0;
+    margin-bottom:auto;
+    line-height: 1em;
+    font-size: 1em;
+}
+.text > p:last-of-type{
+    width:100%;
+    text-align:right;
+    color:silver;
+    margin-bottom:-7px;
+    margin-top:auto;
+}
+.textbox{
+    width:75%;
+    display:flex;
+    flex-direction:column;
+    background-color:whitesmoke;
+    border:none;
+    border-radius:12px;
+    width:80%;
+    overflow:hidden;
+    resize:none;
+    color:#e0e0de;
+    transition: all ease 0.3s;
+}
+.textbox:focus{
+    opacity: 1;
+    transition: all ease .3s;
+}
+.text-l{
+    float:left;
+    padding-right:10px;
+}
+.text-r{
+    float:right;
+    padding-left:10px;
+}
+.avatar-left{
+    justify-content:center;
+    flex:1;
+    align-items:center;
+    width:25%;
+    float:left;
+    padding-right:10px;
+}
+.avatar-left > img{
+    border-radius: 20px;
+}
+.avatar-right{
+    justify-content:center;
+    flex:1;
+    align-items:center;
+    width:25%;
+    float:right;
+    padding-left:10px;
+}
+.avatar-right > img{
+    border-radius: 20px;
+}
+.macro{
+    margin-top:5px;
+    border-radius:7px;
+    padding:5px 10px;
+    word-break:break-word;
+}
+.inputarea{
+    margin-top:5px;
+    width:85%;
+    display:flex;
+}
+.msj-rta{
+    display:flex;
+    padding:3px 0px;
+}
+.msj-rta > .macro{
+    position: relative;
+    background:whitesmoke;
+    flex:4;
+}
+.msj{
+    display:flex;
+    padding:3px 0px;
+}
+.msj > .macro{
+    position: relative;
+    background:white;
+    flex:4;
+}
+.space{
+    flex:1;
+}
+.send{
+    opacity: .4;
+    background-color:rgba(0,0,0,0);
+    outline: none;
+    border:none;
+    color: #292b2c;
+    margin-left: 5px;
+    transition: all ease .3s;
+}
+.send:hover{
+    outline: none;
+    opacity: 1;
+    transition: all ease .3s;
+}
+.send:focus{
+    outline: none;
+    opacity: .4;
+    transition: all ease .3s;
+}
+.frame{
+    background:#e0e0de;
+    height:50vh;
+    border-radius: 5px;
+    overflow:hidden;
+    padding:0;
+    box-shadow: 1px 2px 10px #888888;
+}
+.chatroom{
+    margin:0 25vh;
+    padding: auto;
+}
+.frame > div:last-of-type{
+    position:absolute;
+    bottom:5px;
+    width:100%;
+    display:flex;
+}
+ul {
+    width:100%;
+    list-style-type: none;
+    position:absolute;
+    bottom:40px;
+    display:flex;
+    padding: 0px;
+    flex-direction: column;
+	margin-bottom:0;
+	overflow-y:auto;
+}
+.msj:before{
+    width: 0;
+    height: 0;
+    content:"";
+    top:5px;
+    left:55px;
+    position:relative;
+    border-style: solid;
+    border-width: 0 13px 13px 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+.msj-rta:after{
+    width: 0;
+    height: 0;
+    content:"";
+    top:5px;
+    left:-55px;
+    position:relative;
+    border-style: solid;
+    border-width: 13px 13px 0 0;
+    border-color: whitesmoke transparent transparent transparent;
+}
+::-webkit-scrollbar{display: none;}
