@@ -141,74 +141,78 @@ class ChatViewController:  UIViewController, ChatDataSource, UITextFieldDelegate
     
     func fetchMessage(offset: String) -> Void
     {
-        //获取消息
-        let url = "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/9efda2b6ba2be2eac74b3bf7f8bc37f9cfac1505ad6789833f87e4ae289f28de/pull_api/pull_action?offset="+offset
-        DispatchQueue.global().async{ ()-> Void in
-            let parseData = self.parseJSON(inputData: self.getJSON(urlToRequest: url))
-            //print(parseData)
-            if parseData.count != 0 {
-                if parseData["-1"] == nil{
-                    for (_,value) in parseData{
-                        //print("\(key):\(value)")
-                        self.v = "\(value)"
-                    }
-                    /*
-                    //sort
-                    var a = [Int]()
-                    var b = [String]()
-                    var t:NSNumber
-                    for (key,value) in parseData{
-                        t = (key as! NSNumber)
-                        a.append(t.intValue)
-                        b.append(value as? String ?? "")
-                    }
-                    a.sort(by: <)
-                    for ele in a{
-                        print("\(ele):\(parseData[ele])")
-                    }
-                    */
-                }
-            }
-        }
+//        //获取消息
+//        let url = "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/9efda2b6ba2be2eac74b3bf7f8bc37f9cfac1505ad6789833f87e4ae289f28de/pull_api/pull_action?offset="+offset
+//        DispatchQueue.global().async{ ()-> Void in
+//            let parseData = self.parseJSON(inputData: self.getJSON(urlToRequest: url))
+//            //print(parseData)
+//            if parseData.count != 0 {
+//                if parseData["-1"] == nil{
+//                    for (_,value) in parseData{
+//                        //print("\(key):\(value)")
+//                        self.v = "\(value)"
+//                    }
+//                    /*
+//                    //sort
+//                    var a = [Int]()
+//                    var b = [String]()
+//                    var t:NSNumber
+//                    for (key,value) in parseData{
+//                        t = (key as! NSNumber)
+//                        a.append(t.intValue)
+//                        b.append(value as? String ?? "")
+//                    }
+//                    a.sort(by: <)
+//                    for ele in a{
+//                        print("\(ele):\(parseData[ele])")
+//                    }
+//                    */
+//                }
+//            }
+//        }
+//        ChatAPI.fetchPowerfulData(text: offset, type: "Emotion", completionHandler: nil)
     }
     
     func fetchData(input: String, Type:String) -> Void {
-        //解析JSON信息
-        let url = "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/6d42906167d017b9394c9de3b84bcdaaed75ba5bf40ad8db419de6e67a04271a/powerful/powerful"
+//        //解析JSON信息
+//        let url = "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/6d42906167d017b9394c9de3b84bcdaaed75ba5bf40ad8db419de6e67a04271a/powerful/powerful"
         newInput = input.replacingOccurrences(of: " ", with: "+")
-        let actualResult = url+"?text=%22"+newInput+"%22&type="+Type
-        
-        //多线程处理
-        DispatchQueue.global().async{ ()-> Void in
-            let parseData = self.parseJSON(inputData: self.getJSON(urlToRequest: actualResult))
-            print(parseData)
-            switch Type {
-            case "Entities":
-                for (key, value) in parseData{
-                    if key as? String != "NULL"{
-                        self.textTemp = self.textTemp+"\(key):\n\t\(value)\n"
-                    }
-                }
-                break
-            case "Emotion":
-                var maxkey = ""
-                var maxvalue:Double = 0.0
-                for (key, value) in parseData{
-                    if (value as! Double)>maxvalue{
-                        maxvalue = value as! Double
-                        maxkey = key as! String
-                    }
-                }
-                self.textTemp = self.textTemp + "Emotion: " + maxkey + "\n"
-                DispatchQueue.main.async{
-                    //回到主线程
-                    self.txtEmotion = maxkey
-                }
-                break
-            default:
-                break
-            }
-        }
+//        let actualResult = url+"?text=%22"+newInput+"%22&type="+Type
+//        
+//        //多线程处理
+//        DispatchQueue.global().async{ ()-> Void in
+//            let parseData = self.parseJSON(inputData: self.getJSON(urlToRequest: actualResult))
+//            print(parseData)
+//            switch Type {
+//            case "Entities":
+//                for (key, value) in parseData{
+//                    if key as? String != "NULL"{
+//                        self.textTemp = self.textTemp+"\(key):\n\t\(value)\n"
+//                    }
+//                }
+//                break
+//            case "Emotion":
+//                var maxkey = ""
+//                var maxvalue:Double = 0.0
+//                for (key, value) in parseData{
+//                    if (value as! Double)>maxvalue{
+//                        maxvalue = value as! Double
+//                        maxkey = key as! String
+//                    }
+//                }
+//                self.textTemp = self.textTemp + "Emotion: " + maxkey + "\n"
+//                DispatchQueue.main.async{
+//                    //回到主线程
+//                    self.txtEmotion = maxkey
+//                }
+//                break
+//            default:
+//                break
+//            }
+//        }
+        ChatAPI.fetchPowerfulData(text: "\(offset)", type: "Emotion", completionHandler: {
+            
+        })
     }
     
     //解析JSON信息

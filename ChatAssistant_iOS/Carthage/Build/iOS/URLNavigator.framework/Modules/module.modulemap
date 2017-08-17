@@ -1,0 +1,10 @@
+framework module URLNavigator {
+  umbrella header "URLNavigator.h"
+
+  export *
+  module * { export * }
+}
+
+module URLNavigator.Swift {
+    header "URLNavigator-Swift.h"
+}

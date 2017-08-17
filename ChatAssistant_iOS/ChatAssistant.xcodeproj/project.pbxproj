@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180404391EBDAC1A005844A4 /* OpenWhisk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180404381EBDAC1A005844A4 /* OpenWhisk.framework */; };
-		1804043A1EBDAC1A005844A4 /* OpenWhisk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 180404381EBDAC1A005844A4 /* OpenWhisk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1804043D1EBDB297005844A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1804043C1EBDB297005844A4 /* Assets.xcassets */; };
 		1804043F1EBDD963005844A4 /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1804043E1EBDD963005844A4 /* ChatDataSource.swift */; };
 		180404421EBDD98F005844A4 /* UserInfoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180404411EBDD98F005844A4 /* UserInfoSource.swift */; };
@@ -28,6 +26,15 @@
 		18F028D91EBCE03C00652EFF /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F028D81EBCE03C00652EFF /* MessageTableViewController.swift */; };
 		18F028DB1EBCE17F00652EFF /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F028DA1EBCE17F00652EFF /* MessageTableViewCell.swift */; };
 		18F028E11EBD534B00652EFF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F028E01EBD534B00652EFF /* ChatViewController.swift */; };
+		6DA8FCE81F44913800459801 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA8FCE71F44913800459801 /* ChatAPI.swift */; };
+		6DA8FCEC1F44BD7400459801 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCEB1F44BD7400459801 /* Alamofire.framework */; };
+		6DA8FCEE1F44BD7900459801 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCED1F44BD7900459801 /* ObjectMapper.framework */; };
+		6DA8FCF01F44BD7F00459801 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCEF1F44BD7F00459801 /* Realm.framework */; };
+		6DA8FCF21F44BD8100459801 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCF11F44BD8100459801 /* RealmSwift.framework */; };
+		6DA8FCF41F44BD8600459801 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCF31F44BD8600459801 /* SDWebImage.framework */; };
+		6DA8FCF61F44BD8A00459801 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCF51F44BD8A00459801 /* SnapKit.framework */; };
+		6DA8FCF81F44BD8D00459801 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCF71F44BD8D00459801 /* Then.framework */; };
+		6DA8FCFA1F44BD9100459801 /* URLNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA8FCF91F44BD9100459801 /* URLNavigator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1804043A1EBDAC1A005844A4 /* OpenWhisk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +68,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		180404381EBDAC1A005844A4 /* OpenWhisk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenWhisk.framework; sourceTree = "<group>"; };
 		1804043C1EBDB297005844A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1804043E1EBDD963005844A4 /* ChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataSource.swift; sourceTree = "<group>"; };
 		180404411EBDD98F005844A4 /* UserInfoSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoSource.swift; sourceTree = "<group>"; };
@@ -86,8 +91,17 @@
 		18F0288B1EBCD40000652EFF /* ChatAssistantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAssistantUITests.swift; sourceTree = "<group>"; };
 		18F0288D1EBCD40000652EFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18F028D81EBCE03C00652EFF /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
-		18F028DA1EBCE17F00652EFF /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewCell.swift; path = ../MessageTableViewCell.swift; sourceTree = "<group>"; };
+		18F028DA1EBCE17F00652EFF /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		18F028E01EBD534B00652EFF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		6DA8FCE71F44913800459801 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
+		6DA8FCEB1F44BD7400459801 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		6DA8FCED1F44BD7900459801 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		6DA8FCEF1F44BD7F00459801 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		6DA8FCF11F44BD8100459801 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		6DA8FCF31F44BD8600459801 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		6DA8FCF51F44BD8A00459801 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		6DA8FCF71F44BD8D00459801 /* Then.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Then.framework; path = Carthage/Build/iOS/Then.framework; sourceTree = "<group>"; };
+		6DA8FCF91F44BD9100459801 /* URLNavigator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URLNavigator.framework; path = Carthage/Build/iOS/URLNavigator.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +109,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180404391EBDAC1A005844A4 /* OpenWhisk.framework in Frameworks */,
+				6DA8FCEC1F44BD7400459801 /* Alamofire.framework in Frameworks */,
+				6DA8FCFA1F44BD9100459801 /* URLNavigator.framework in Frameworks */,
+				6DA8FCF81F44BD8D00459801 /* Then.framework in Frameworks */,
+				6DA8FCF61F44BD8A00459801 /* SnapKit.framework in Frameworks */,
+				6DA8FCEE1F44BD7900459801 /* ObjectMapper.framework in Frameworks */,
+				6DA8FCF41F44BD8600459801 /* SDWebImage.framework in Frameworks */,
+				6DA8FCF21F44BD8100459801 /* RealmSwift.framework in Frameworks */,
+				6DA8FCF01F44BD7F00459801 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,11 +161,11 @@
 		18F0285D1EBCD40000652EFF = {
 			isa = PBXGroup;
 			children = (
-				180404381EBDAC1A005844A4 /* OpenWhisk.framework */,
 				18F028681EBCD40000652EFF /* ChatAssistant */,
 				18F0287F1EBCD40000652EFF /* ChatAssistantTests */,
 				18F0288A1EBCD40000652EFF /* ChatAssistantUITests */,
 				18F028671EBCD40000652EFF /* Products */,
+				6DA8FCEA1F44BD7300459801 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +187,8 @@
 				18F028DA1EBCE17F00652EFF /* MessageTableViewCell.swift */,
 				18F028D81EBCE03C00652EFF /* MessageTableViewController.swift */,
 				1804044C1EBDF904005844A4 /* PopoverViewController.swift */,
+				6DA8FCE61F4490F100459801 /* API */,
+				6DA8FCE91F44914100459801 /* NetworkResponse */,
 				180404451EBDDA2B005844A4 /* TableView */,
 				180404401EBDD974005844A4 /* Model */,
 				18F028E21EBD548400652EFF /* ChatView */,
@@ -204,6 +227,36 @@
 			name = ChatView;
 			sourceTree = "<group>";
 		};
+		6DA8FCE61F4490F100459801 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6DA8FCE71F44913800459801 /* ChatAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		6DA8FCE91F44914100459801 /* NetworkResponse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NetworkResponse;
+			sourceTree = "<group>";
+		};
+		6DA8FCEA1F44BD7300459801 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA8FCF91F44BD9100459801 /* URLNavigator.framework */,
+				6DA8FCF71F44BD8D00459801 /* Then.framework */,
+				6DA8FCF51F44BD8A00459801 /* SnapKit.framework */,
+				6DA8FCF31F44BD8600459801 /* SDWebImage.framework */,
+				6DA8FCF11F44BD8100459801 /* RealmSwift.framework */,
+				6DA8FCEF1F44BD7F00459801 /* Realm.framework */,
+				6DA8FCED1F44BD7900459801 /* ObjectMapper.framework */,
+				6DA8FCEB1F44BD7400459801 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +268,7 @@
 				18F028631EBCD40000652EFF /* Frameworks */,
 				18F028641EBCD40000652EFF /* Resources */,
 				1804043B1EBDAC1A005844A4 /* Embed Frameworks */,
+				6DA8FCFB1F44BDBD00459801 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -337,6 +391,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6DA8FCFB1F44BDBD00459801 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/URLNavigator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Then.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18F028621EBCD40000652EFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -344,6 +422,7 @@
 			files = (
 				180404441EBDD99D005844A4 /* MessageItem.swift in Sources */,
 				180404421EBDD98F005844A4 /* UserInfoSource.swift in Sources */,
+				6DA8FCE81F44913800459801 /* ChatAPI.swift in Sources */,
 				18F028D91EBCE03C00652EFF /* MessageTableViewController.swift in Sources */,
 				18F028DB1EBCE17F00652EFF /* MessageTableViewCell.swift in Sources */,
 				1804044D1EBDF904005844A4 /* PopoverViewController.swift in Sources */,
@@ -511,6 +590,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ChatAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -528,6 +608,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = ChatAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
