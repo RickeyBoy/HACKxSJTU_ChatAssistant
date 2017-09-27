@@ -1,10 +1,8 @@
 .DS_Store
-
-build
-
+/.build
+/Packages
+/*.xcodeproj
 **/xcuserdata
-*.pbxuser
-*.mode1v3
-
-Podfile.lock
-Pods
+**/xcshareddata
+Pods/
+Carthage/

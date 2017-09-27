@@ -52,7 +52,7 @@ class MessageItem {
         
         let width =  225, height = 10000.0
         
-        let atts =  [NSFontAttributeName: font]
+        let atts =  [NSAttributedStringKey.font: font]
         
         let size =  body.boundingRect(with:
             CGSize(width: CGFloat(width), height: CGFloat(height)),

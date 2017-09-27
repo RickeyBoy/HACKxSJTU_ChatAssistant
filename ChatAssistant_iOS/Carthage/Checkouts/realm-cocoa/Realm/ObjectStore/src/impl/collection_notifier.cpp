@@ -51,6 +51,8 @@ CollectionNotifier::get_modification_checker(TransactionChangeInfo const& info,
 void DeepChangeChecker::find_related_tables(std::vector<RelatedTable>& out, Table const& table)
 {
     auto table_ndx = table.get_index_in_group();
+    if (table_ndx == npos)
+        return;
     if (any_of(begin(out), end(out), [=](auto& tbl) { return tbl.table_ndx == table_ndx; }))
         return;
 
@@ -134,7 +136,7 @@ bool DeepChangeChecker::check_row(Table const& table, size_t idx, size_t depth)
     if (depth >= m_current_path.size()) {
         // Don't mark any of the intermediate rows checked along the path as
         // not modified, as a search starting from them might hit a modification
-        for (size_t i = 1; i < m_current_path.size(); ++i)
+        for (size_t i = 0; i < m_current_path.size(); ++i)
             m_current_path[i].depth_exceeded = true;
         return false;
     }
@@ -393,6 +395,11 @@ void CollectionNotifier::detach()
     REALM_ASSERT(m_sg);
     do_detach_from(*m_sg);
     m_sg = nullptr;
+}
+
+SharedGroup& CollectionNotifier::source_shared_group()
+{
+    return *Realm::Internal::get_shared_group(*m_realm);
 }
 
 void CollectionNotifier::add_changes(CollectionChangeBuilder change)

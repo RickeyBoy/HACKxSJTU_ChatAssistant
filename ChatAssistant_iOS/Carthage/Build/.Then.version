@@ -1,9 +1,15 @@
 {
-  "commitish" : "2.1.0",
   "iOS" : [
-    {
-      "hash" : "06af161e66f5d405d30b312e621cd6b53899bd4b8fd0e57defee4879ab4bff5f",
-      "name" : "Then"
-    }
+
+  ],
+  "commitish" : "2.2.0",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
   ]
 }

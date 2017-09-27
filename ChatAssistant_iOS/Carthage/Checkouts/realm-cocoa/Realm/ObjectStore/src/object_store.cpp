@@ -24,6 +24,7 @@
 #include "shared_realm.hpp"
 #include "util/format.hpp"
 
+#include <realm/descriptor.hpp>
 #include <realm/group.hpp>
 #include <realm/table.hpp>
 #include <realm/table_view.hpp>
@@ -115,6 +116,12 @@ void insert_column(Group& group, Table& table, Property const& property, size_t 
         REALM_ASSERT(link_table);
         table.insert_column_link(col_ndx, is_array(property.type) ? type_LinkList : type_Link,
                                  property.name, *link_table);
+    }
+    else if (is_array(property.type)) {
+        DescriptorRef desc;
+        table.insert_column(col_ndx, type_Table, property.name, &desc);
+        desc->add_column(to_core_type(property.type & ~PropertyType::Flags), ObjectStore::ArrayColumnName,
+                         nullptr, is_nullable(property.type));
     }
     else {
         table.insert_column(col_ndx, to_core_type(property.type), property.name, is_nullable(property.type));
@@ -352,8 +359,8 @@ struct SchemaDifferenceExplainer {
     {
         errors.emplace_back("Property '%1.%2' has been changed from '%3' to '%4'.",
                             op.object->name, op.new_property->name,
-                            string_for_property_type(op.old_property->type),
-                            string_for_property_type(op.new_property->type));
+                            op.old_property->type_string(),
+                            op.new_property->type_string());
     }
 
     void operator()(schema_change::MakePropertyNullable op)
@@ -502,7 +509,7 @@ void ObjectStore::verify_valid_external_changes(std::vector<SchemaChange> const&
     verify_no_errors<InvalidSchemaChangeException>(verifier, changes);
 }
 
-void ObjectStore::verify_compatible_for_read_only(std::vector<SchemaChange> const& changes)
+void ObjectStore::verify_compatible_for_immutable_and_readonly(std::vector<SchemaChange> const& changes)
 {
     using namespace schema_change;
     struct Verifier : SchemaDifferenceExplainer {
